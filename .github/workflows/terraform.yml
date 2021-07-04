@@ -18,6 +18,9 @@ jobs:
         run: terraform fmt -check -no-color -recursive
 
       - run: cd aws
+      
+      - name: Where am I?
+        run: pwd
 
       - name: Terraform init
         id: init
