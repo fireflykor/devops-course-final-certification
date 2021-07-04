@@ -5,16 +5,22 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check -no-color -recursive
+
       - name: Terraform init for test
         id: init
-        run: terraform init -backend=false
+        run: terraform init
+
       - name: Terraform Validate
         id: validate
         run: terraform validate aws
