@@ -20,10 +20,10 @@ module "vpc" {
 }
 
 module "ec2" {
-  source = "./modules/ec2"
+  source    = "./modules/ec2"
   subnet_id = module.vpc.public_subnet_id
   sg_ids    = [module.vpc.public_sg_id]
-  name = "web"
+  name      = "web"
   env       = "devops_course"
   key_name  = "devops-cource"
 }
