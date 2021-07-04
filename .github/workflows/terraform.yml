@@ -17,9 +17,11 @@ jobs:
         id: fmt
         run: terraform fmt -check -no-color -recursive
 
-      - name: Terraform init for test
+      - run: cd aws
+
+      - name: Terraform init
         id: init
-        run: terraform init aws
+        run: terraform init
 
       - name: Terraform Validate
         id: validate
