@@ -17,7 +17,7 @@ jobs:
         id: fmt
         run: terraform fmt -check -no-color -recursive
 
-      - run: ll
+      - run: ls
       
       - run: cd aws
       
