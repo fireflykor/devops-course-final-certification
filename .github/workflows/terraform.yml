@@ -17,6 +17,8 @@ jobs:
         id: fmt
         run: terraform fmt -check -no-color -recursive
 
+      - run: ll
+      
       - run: cd aws
       
       - name: Where am I?
@@ -28,4 +30,4 @@ jobs:
 
       - name: Terraform Validate
         id: validate
-        run: terraform validate aws
+        run: terraform validate
