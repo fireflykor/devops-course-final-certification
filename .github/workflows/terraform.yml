@@ -19,7 +19,7 @@ jobs:
 
       - name: Terraform init for test
         id: init
-        run: terraform init
+        run: terraform init aws
 
       - name: Terraform Validate
         id: validate
