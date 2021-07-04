@@ -18,17 +18,10 @@ jobs:
         run: terraform fmt -check -no-color -recursive
         working-directory: ./aws
 
-      - run: ls
-      
-      - name: Where am I?
-        run: pwd
-
       - name: Terraform init
         id: init
         run: terraform init
         working-directory: ./aws
-        
-      - run: ls
 
       - name: Terraform Validate
         id: validate
