@@ -1,0 +1,10 @@
+---
+- name: Install default packages to Debian systems
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items:
+    - iotop
+    - htop
+    - mc
+    - net-tools
