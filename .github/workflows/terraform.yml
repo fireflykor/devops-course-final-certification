@@ -12,6 +12,9 @@ jobs:
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check -no-color -recursive
+      - name: Terraform init for test
+        id: init
+        run: terraform init -backend=false
       - name: Terraform Validate
         id: validate
         run: terraform validate aws
