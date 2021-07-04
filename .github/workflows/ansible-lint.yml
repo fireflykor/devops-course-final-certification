@@ -4,10 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - run: pwd
+    - run: ls
 
     - name: Lint Ansible Playbook
       uses: ansible/ansible-lint-action@151b9a224f53c80fdc2c7aed08f3671d190e7a9e
       with:
-        targets: "./ansible"
+        targets: ./ansible
         args: "-q"
