@@ -1,0 +1,37 @@
+---
+- name: Сreate build directory
+  file:
+    path: "{{ build_directory }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: "{{ build_directory }}/index.html"
+    mode: '0644'
+
+- name: Copy Dockerfile
+  copy:
+    src: Dockerfile
+    dest: "{{ build_directory }}/Dockerfile"
+    mode: '0644'
+
+- name: Build container image
+  docker_image:
+    name: "{{ image_name }}"
+    build:
+      path: /docker
+    source: build
+    state: present
+
+- name: Create nginx container
+  docker_container:
+    name: nginx
+    image: "{{ image_name }}"
+    state: started
+    restart: yes
+    ports:
+      - "80:80"
