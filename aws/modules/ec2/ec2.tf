@@ -19,7 +19,7 @@ resource "aws_instance" "ec2" {
   instance_type          = var.instance_type
   subnet_id              = var.subnet_id
   vpc_security_group_ids = var.sg_ids
-  key_name               = var.key_name
+  key_name = var.key_name
 
   root_block_device {
     volume_size = var.root_disk_size
@@ -27,7 +27,7 @@ resource "aws_instance" "ec2" {
 
   tags = {
     Name = var.name
-    Env  = var.env
+    Env = var.env
   }
 }
 
