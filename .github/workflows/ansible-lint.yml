@@ -7,13 +7,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - run: pwd
-    - run: ls
-
     - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@c37fb7b4bda2c8cb18f4942716bae9f11b0dc9bc
+      uses: ansible/ansible-lint-action@master
       with:
         args: "-q"
+        targets: "./ansible/*yml"
         override-deps: |
           ansible==2.10.0
           ansible-lint==4.2.0
