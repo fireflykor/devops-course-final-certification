@@ -1,7 +1,7 @@
 ---
 - name: Сreate build directory
   file:
-    path: /docker
+    path: "{{ build_directory }}"
     state: directory
     owner: root
     group: root
@@ -10,18 +10,18 @@
 - name: Copy index.html
   copy:
     src: index.html
-    dest: /docker/index.html
+    dest: "{{ build_directory }}/index.html"
     mode: '0644'
 
 - name: Copy Dockerfile
   copy:
     src: Dockerfile
-    dest: /docker/Dockerfile
+    dest: "{{ build_directory }}/Dockerfile"
     mode: '0644'
 
 - name: Build container image
   docker_image:
-    name: nginx:devops-course
+    name: "{{ image_name }}"
     build:
       path: /docker
     source: build
@@ -30,7 +30,7 @@
 - name: Create nginx container
   docker_container:
     name: nginx
-    image: nginx:devops-course
+    image: "{{ image_name }}"
     state: started
     restart: yes
     ports:

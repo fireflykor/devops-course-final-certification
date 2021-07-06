@@ -2,6 +2,7 @@
 - name: Deploy nginx in docker container
   hosts: web_server_instance
   become: yes
-  remote_user: root
+  remote_user: ubuntu
+  gather_facts: no
   roles:
     - docker-nginx
